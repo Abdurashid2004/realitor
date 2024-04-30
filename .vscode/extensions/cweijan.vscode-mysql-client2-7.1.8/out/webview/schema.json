@@ -1,0 +1,830 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "AdvanceOption": {
+            "properties": {
+                "groupingTables": {
+                    "description": "whether to group tables with same prefix.",
+                    "type": "boolean"
+                },
+                "groupingThreshold": {
+                    "description": "Tables are only grouped when a threshold is exceeded.",
+                    "type": "number"
+                },
+                "hideSystemSchema": {
+                    "type": "boolean"
+                },
+                "includeDatabases": {
+                    "type": "string"
+                },
+                "safeUpdateMode": {
+                    "description": "mysql safe update mode",
+                    "type": "boolean"
+                },
+                "showForeignKey": {
+                    "description": "Whether to display the foreign keys of mysql and mariadb, it is not displayed by default, because it will affect the query columns speed.",
+                    "type": "boolean"
+                },
+                "sqlMode": {
+                    "description": "mysql sql mode",
+                    "type": "string"
+                },
+                "timeZone": {
+                    "description": "mysql time zone",
+                    "type": "string"
+                },
+                "usingCustomDatabaseName": {
+                    "description": "Using custom database name",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "ClickhouseOption": {
+            "properties": {
+                "latestVersion": {
+                    "type": "boolean"
+                },
+                "protocol": {
+                    "enum": [
+                        "http",
+                        "https"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatabaseType": {
+            "enum": [
+                "Cassandra",
+                "ClickHouse",
+                "Common",
+                "Db2",
+                "Docker",
+                "DuckDB",
+                "ElasticSearch",
+                "FTP",
+                "Hive",
+                "JDBC",
+                "Kafka",
+                "Loki",
+                "MariaDB",
+                "MongoDB",
+                "MySQL",
+                "Neo4j",
+                "Oracle",
+                "PostgreSQL",
+                "PrestoDB",
+                "RDP",
+                "RabbitMQ",
+                "Redis",
+                "Redshift",
+                "S3",
+                "SQLite",
+                "SSH",
+                "Snowflake",
+                "SqlServer",
+                "Trino",
+                "Zookeeper",
+                "达梦"
+            ],
+            "type": "string"
+        },
+        "ElasticSearchOption": {
+            "properties": {
+                "authType": {
+                    "enum": [
+                        "account",
+                        "none",
+                        "token"
+                    ],
+                    "type": "string"
+                },
+                "basicToken": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "authType",
+                "basicToken"
+            ],
+            "type": "object"
+        },
+        "FileSystemOption": {
+            "properties": {
+                "encoding": {
+                    "description": "ftp transfer encoding",
+                    "enum": [
+                        "ascii",
+                        "base64",
+                        "base64url",
+                        "binary",
+                        "gbk",
+                        "hex",
+                        "latin1",
+                        "ucs-2",
+                        "ucs2",
+                        "utf-8",
+                        "utf16le",
+                        "utf8"
+                    ],
+                    "type": "string"
+                },
+                "showHidden": {
+                    "description": "show hidden file on sftp or ftp connection.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "HTTPConfig": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "port"
+            ],
+            "type": "object"
+        },
+        "JDBCOption": {
+            "properties": {
+                "dialect": {
+                    "$ref": "#/definitions/DatabaseType"
+                },
+                "driverClass": {
+                    "type": "string"
+                },
+                "driverPath": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NodeRedisOption": {
+            "properties": {
+                "allDatabase": {
+                    "type": "boolean"
+                },
+                "cluster": {
+                    "description": "set redis connection as cluster mode.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Partial": {
+            "$ref": "#/definitions/__type"
+        },
+        "Partial<DeprecatedOption>": {
+            "properties": {
+                "authType": {
+                    "$ref": "#/definitions/SQLServerConnectType",
+                    "description": "Deprecated, use sqlServer.authType instead."
+                },
+                "azureClientId": {
+                    "description": "Deprecated, use sqlServer.azureClientId instead.",
+                    "type": "string"
+                },
+                "azureClientSecret": {
+                    "description": "Deprecated, use sqlServer.azureClientSecret instead.",
+                    "type": "string"
+                },
+                "azureTenantId": {
+                    "description": "Deprecated, use sqlServer.azureTenantId instead.",
+                    "type": "string"
+                },
+                "domain": {
+                    "description": "Deprecated, use sqlServer.domain instead.",
+                    "type": "string"
+                },
+                "driver": {
+                    "description": "Deprecated, use jdbc.driverClass instead.",
+                    "type": "string"
+                },
+                "driverPath": {
+                    "description": "Deprecated, use jdbc.driverPath instead.",
+                    "type": "string"
+                },
+                "encoding": {
+                    "description": "Deprecated, use fs.encoding instead. ftp transfer encoding",
+                    "enum": [
+                        "ascii",
+                        "base64",
+                        "base64url",
+                        "binary",
+                        "hex",
+                        "latin1",
+                        "ucs-2",
+                        "ucs2",
+                        "utf-8",
+                        "utf16le",
+                        "utf8"
+                    ],
+                    "type": "string"
+                },
+                "encrypt": {
+                    "description": "Deprecated, use sqlServer.encrypt instead.",
+                    "type": "boolean"
+                },
+                "esAuth": {
+                    "description": "Deprecated, use elasticSearch.authType instead.",
+                    "enum": [
+                        "account",
+                        "none",
+                        "token"
+                    ],
+                    "type": "string"
+                },
+                "esToken": {
+                    "description": "Deprecated, use elasticSearch.basicToken instead.",
+                    "type": "string"
+                },
+                "hideSystemSchema": {
+                    "description": "Deprecated, use advance.hideSystemSchema instead.",
+                    "type": "boolean"
+                },
+                "includeBuckets": {
+                    "description": "Deprecated, use s3.includeBuckets instead.",
+                    "type": "string"
+                },
+                "includeDatabases": {
+                    "description": "Deprecated, use advance.includeDatabases instead.",
+                    "type": "string"
+                },
+                "instanceName": {
+                    "description": "Deprecated, use sqlServer.instanceName instead.",
+                    "type": "string"
+                },
+                "isCluster": {
+                    "description": "Deprecated, use redis.cluster instead, set redis connection as cluster mode.",
+                    "type": "boolean"
+                },
+                "jdbcDialect": {
+                    "$ref": "#/definitions/DatabaseType",
+                    "description": "Deprecated, use jdbc.dialect instead."
+                },
+                "latestVersion": {
+                    "description": "Deprecated, use clickhouse.latestVersion instead.",
+                    "type": "boolean"
+                },
+                "protocol": {
+                    "description": "Deprecated, use clickhouse.protocol instead.",
+                    "enum": [
+                        "http",
+                        "https"
+                    ],
+                    "type": "string"
+                },
+                "s3AccessKey": {
+                    "description": "Deprecated, use s3.accessKey instead.",
+                    "type": "string"
+                },
+                "s3AccessSecret": {
+                    "description": "Deprecated, use s3.accessSecret instead.",
+                    "type": "string"
+                },
+                "s3PathStyle": {
+                    "description": "Deprecated, use s3.pathStyle instead.",
+                    "type": "boolean"
+                },
+                "s3Region": {
+                    "description": "Deprecated, use s3.region instead.",
+                    "type": "string"
+                },
+                "s3ServiceIds": {
+                    "description": "Deprecated, use s3.serviceIds instead.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "s3UseSSL": {
+                    "description": "Deprecated, use s3.useSSL instead.",
+                    "type": "boolean"
+                },
+                "showHidden": {
+                    "description": "Deprecated, use fs.showHidden instead. show hidden file on sftp or ftp connection.",
+                    "type": "boolean"
+                },
+                "snowflakeAccount": {
+                    "description": "Deprecated, use snowflake.account instead. Snowflake account id, see https://docs.snowflake.com/en/user-guide/connecting",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Partial<NodeConfig0>": {
+            "properties": {
+                "advance": {
+                    "$ref": "#/definitions/AdvanceOption"
+                },
+                "caPath": {
+                    "type": "string"
+                },
+                "clickhouse": {
+                    "$ref": "#/definitions/ClickhouseOption"
+                },
+                "clientCertPath": {
+                    "type": "string"
+                },
+                "clientKeyPath": {
+                    "type": "string"
+                },
+                "connectTimeout": {
+                    "type": "number"
+                },
+                "connectionKey": {
+                    "description": "status",
+                    "type": "string"
+                },
+                "connectionUrl": {
+                    "type": "string"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "dbPath": {
+                    "description": "Database path, working for sqlite and duckDB",
+                    "type": "string"
+                },
+                "dbType": {
+                    "$ref": "#/definitions/DatabaseType"
+                },
+                "disable": {
+                    "type": "boolean"
+                },
+                "dockerConnType": {
+                    "enum": [
+                        "socket",
+                        "ssh",
+                        "tcp"
+                    ],
+                    "type": "string"
+                },
+                "elasticSearch": {
+                    "$ref": "#/definitions/ElasticSearchOption"
+                },
+                "fs": {
+                    "$ref": "#/definitions/FileSystemOption"
+                },
+                "global": {
+                    "type": "boolean"
+                },
+                "group": {
+                    "description": "connection group",
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "httpProxy": {
+                    "$ref": "#/definitions/HTTPConfig",
+                    "description": "HTTP tunnel config."
+                },
+                "jdbc": {
+                    "$ref": "#/definitions/JDBCOption"
+                },
+                "kafkaAuth": {
+                    "enum": [
+                        "none",
+                        "plain",
+                        "scram-sha-256",
+                        "scram-sha-512"
+                    ],
+                    "type": "string"
+                },
+                "mongoAuthSource": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                },
+                "rdpConfig": {
+                    "$ref": "#/definitions/Partial"
+                },
+                "readonly": {
+                    "type": "boolean"
+                },
+                "redis": {
+                    "$ref": "#/definitions/NodeRedisOption"
+                },
+                "requestTimeout": {
+                    "type": "number"
+                },
+                "s3": {
+                    "$ref": "#/definitions/S3Option"
+                },
+                "savePassword": {
+                    "$ref": "#/definitions/SavePasswordType"
+                },
+                "snowflake": {
+                    "$ref": "#/definitions/SnowflakeOption"
+                },
+                "socketPath": {
+                    "type": "string"
+                },
+                "socksProxy": {
+                    "$ref": "#/definitions/SocksConfig",
+                    "description": "Socks proxy config."
+                },
+                "sort": {
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "sqlServer": {
+                    "$ref": "#/definitions/SQLServerOption"
+                },
+                "ssh": {
+                    "$ref": "#/definitions/SSHConfig",
+                    "description": "SSH tunnel config."
+                },
+                "sshConnect": {
+                    "$ref": "#/definitions/SSHConfig",
+                    "description": "SSH connection config."
+                },
+                "useConnectionString": {
+                    "type": "boolean"
+                },
+                "useHTTPProxy": {
+                    "description": "whether to use http proxy",
+                    "type": "boolean"
+                },
+                "useSSL": {
+                    "type": "boolean"
+                },
+                "useSocksProxy": {
+                    "description": "whether to use socks proxy",
+                    "type": "boolean"
+                },
+                "user": {
+                    "type": "string"
+                },
+                "usingSSH": {
+                    "description": "whether to use ssh tunnel",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "S3Option": {
+            "properties": {
+                "accessKey": {
+                    "type": "string"
+                },
+                "accessSecret": {
+                    "type": "string"
+                },
+                "includeBuckets": {
+                    "type": "string"
+                },
+                "pathStyle": {
+                    "type": "boolean"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "serviceIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "useSSL": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "SQLServerConnectType": {
+            "enum": [
+                "azure-active-directory-password",
+                "azure-active-directory-service-principal-secret",
+                "default",
+                "ntlm"
+            ],
+            "type": "string"
+        },
+        "SQLServerOption": {
+            "properties": {
+                "authType": {
+                    "$ref": "#/definitions/SQLServerConnectType"
+                },
+                "azureClientId": {
+                    "type": "string"
+                },
+                "azureClientSecret": {
+                    "type": "string"
+                },
+                "azureTenantId": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "encrypt": {
+                    "type": "boolean"
+                },
+                "instanceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SSHConfig": {
+            "properties": {
+                "algorithms": {
+                    "properties": {
+                        "cipher": {
+                            "items": {
+                                "enum": [
+                                    "3des-cbc",
+                                    "aes128-cbc",
+                                    "aes128-ctr",
+                                    "aes128-gcm@openssh.com",
+                                    "aes192-cbc",
+                                    "aes192-ctr",
+                                    "aes256-cbc",
+                                    "aes256-ctr",
+                                    "aes256-gcm@openssh.com",
+                                    "arcfour",
+                                    "arcfour128",
+                                    "arcfour256",
+                                    "blowfish-cbc",
+                                    "cast128-cbc",
+                                    "chacha20-poly1305@openssh.com"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "kex": {
+                            "description": "https://github.com/electron/electron/issues/39603\n由于electron的更新, 现在不再支持diffie-hellman-group1-sha1算法",
+                            "items": {
+                                "description": "Possible Key Exchange Algorithms",
+                                "enum": [
+                                    "curve25519-sha256",
+                                    "curve25519-sha256@libssh.org",
+                                    "diffie-hellman-group-exchange-sha1",
+                                    "diffie-hellman-group-exchange-sha256",
+                                    "diffie-hellman-group1-sha1",
+                                    "diffie-hellman-group14-sha1",
+                                    "diffie-hellman-group14-sha256",
+                                    "diffie-hellman-group15-sha512",
+                                    "diffie-hellman-group16-sha512",
+                                    "diffie-hellman-group17-sha512",
+                                    "diffie-hellman-group18-sha512",
+                                    "ecdh-sha2-nistp256",
+                                    "ecdh-sha2-nistp384",
+                                    "ecdh-sha2-nistp521"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "serverHostKey": {
+                            "items": {
+                                "enum": [
+                                    "ecdsa-sha2-nistp256",
+                                    "ecdsa-sha2-nistp384",
+                                    "ecdsa-sha2-nistp521",
+                                    "rsa-sha2-256",
+                                    "rsa-sha2-512",
+                                    "ssh-dss",
+                                    "ssh-ed25519",
+                                    "ssh-rsa"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "cipher",
+                        "kex",
+                        "serverHostKey"
+                    ],
+                    "type": "object"
+                },
+                "connectTimeout": {
+                    "type": "number"
+                },
+                "disableSFTP": {
+                    "type": "boolean"
+                },
+                "ftpRoot": {
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Use only on SSH connections",
+                    "type": "string"
+                },
+                "passphrase": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                },
+                "privateKeyPath": {
+                    "description": "password privateKey",
+                    "type": "string"
+                },
+                "pruneSFTPRoot": {
+                    "type": "boolean"
+                },
+                "serverType": {
+                    "enum": [
+                        "linux",
+                        "windows"
+                    ],
+                    "type": "string"
+                },
+                "shell": {
+                    "description": "Shell to be executed after opening the terminal",
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "auto",
+                        "password",
+                        "privateKey",
+                        "privateKeyAndPassword"
+                    ],
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "host",
+                "port",
+                "username"
+            ],
+            "type": "object"
+        },
+        "SavePasswordType": {
+            "enum": [
+                "Forever",
+                "Never"
+            ],
+            "type": "string"
+        },
+        "SnowflakeOption": {
+            "description": "https://docs.snowflake.com/en/developer-guide/node-js/nodejs-driver-authenticate",
+            "properties": {
+                "account": {
+                    "description": "Snowflake account id, see https://docs.snowflake.com/en/user-guide/connecting",
+                    "type": "string"
+                },
+                "authenticator": {
+                    "enum": [
+                        "EXTERNALBROWSER",
+                        "SNOWFLAKE",
+                        "SNOWFLAKE_JWT"
+                    ],
+                    "type": "string"
+                },
+                "privateKeyPass": {
+                    "type": "string"
+                },
+                "privateKeyPath": {
+                    "type": "string"
+                },
+                "warehouse": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SocksConfig": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                },
+                "type": {
+                    "enum": [
+                        4,
+                        5
+                    ],
+                    "type": "number"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "port",
+                "type"
+            ],
+            "type": "object"
+        },
+        "__type": {
+            "properties": {
+                "forwardComposition": {
+                    "type": "boolean"
+                },
+                "fullScreen": {
+                    "type": "boolean"
+                },
+                "redirectDrives": {
+                    "type": "boolean"
+                },
+                "showAuthWarning": {
+                    "type": "boolean"
+                },
+                "smartSizing": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "database": {
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Partial<NodeConfig0>"
+                    },
+                    {
+                        "$ref": "#/definitions/Partial<DeprecatedOption>"
+                    }
+                ]
+            },
+            "type": "object"
+        },
+        "database.connections": {
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Partial<NodeConfig0>"
+                    },
+                    {
+                        "$ref": "#/definitions/Partial<DeprecatedOption>"
+                    }
+                ]
+            },
+            "type": "object"
+        },
+        "nosql": {
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Partial<NodeConfig0>"
+                    },
+                    {
+                        "$ref": "#/definitions/Partial<DeprecatedOption>"
+                    }
+                ]
+            },
+            "type": "object"
+        },
+        "nosql.connections": {
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "$ref": "#/definitions/Partial<NodeConfig0>"
+                    },
+                    {
+                        "$ref": "#/definitions/Partial<DeprecatedOption>"
+                    }
+                ]
+            },
+            "type": "object"
+        }
+    },
+    "type": "object"
+}
+

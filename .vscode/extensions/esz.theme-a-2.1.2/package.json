@@ -1,0 +1,46 @@
+{
+	"name": "theme-a",
+	"displayName": "A",
+	"description": "Soft syntax highlighting with colored backgrounds. Inspired by Flatwhite for Atom.",
+	"version": "2.1.2",
+	"publisher": "esz",
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "A",
+				"uiTheme": "vs",
+				"path": "./A.tmTheme.json"
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/flagello/A.tmTheme/issues"
+	},
+	"homepage": "https://github.com/flagello/A.tmTheme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/flagello/A.tmTheme"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#FFF",
+		"theme": "light"
+	},
+	"__metadata": {
+		"id": "f697a5e7-e07b-437b-97bf-217328ba7b8f",
+		"publisherId": "d8fb8c30-8b5d-426a-9eaa-08fa83aef510",
+		"publisherDisplayName": "William Esz",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1705927559277,
+		"pinned": false,
+		"preRelease": false
+	}
+}

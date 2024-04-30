@@ -1,0 +1,493 @@
+{
+	"name": "mongo-runner",
+	"displayName": "Mongo Runner",
+	"description": "MongoDB Runner is a VSCode extension to connect MongoDB instance.",
+	"version": "0.6.4",
+	"publisher": "JoeyYiZhao",
+	"keywords": [
+		"MongoDB",
+		"NoSQL"
+	],
+	"author": {
+		"name": "Joey Zhao",
+		"email": "zhaoyi0113@gmail.com",
+		"url": "https://mongodb-runner.visualstudio.com/_projects"
+	},
+	"engines": {
+		"vscode": "^1.64.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/zhaoyi0113/mongodb-runner.git"
+	},
+	"categories": [
+		"Other",
+		"Themes",
+		"Snippets",
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onView:mongoRunner",
+		"onLanguage:plaintext",
+		"*"
+	],
+	"icon": "images/mongo-runner.png",
+	"main": "./client/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "mongodbRunner",
+				"aliases": [
+					"MongoDBRunner",
+					"MondoDB-Runner",
+					"mr"
+				],
+				"extensions": [
+					".mr"
+				],
+				"configuration": "./server/lang/language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "mongodbRunner",
+				"scopeName": "source.mr",
+				"path": "./server/lang/mongodbRunner.tmLanguage.json",
+				"tokenTypes": {
+					"entity.name.type.instance.jsdoc": "other",
+					"entity.name.function.tagged-template": "other",
+					"meta.import string.quoted": "other",
+					"variable.other.jsdoc": "other"
+				}
+			},
+			{
+				"path": "./server/lang/mongodbDriver.injection.json",
+				"scopeName": "source.injection",
+				"injectTo": [
+					"source.mr"
+				]
+			}
+		],
+		"themes": [
+			{
+				"label": "mongodbRunnerTheme",
+				"uiTheme": "vs-dark",
+				"path": "./server/themes/mr-color-theme.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "mongodbRunner",
+				"path": "./server/lang/snippets.json"
+			}
+		],
+		"views": {
+			"explorer": [
+				{
+					"id": "mongoRunner",
+					"name": "Mongo Runner"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "mongoRunner.hostRefresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "client/resources/light/refresh.svg",
+					"dark": "client/resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "mongoRunner.hostConnect",
+				"title": "Connect"
+			},
+			{
+				"command": "mongoRunner.hostDisconnect",
+				"title": "Disconnect"
+			},
+			{
+				"command": "mongoRunner.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "client/resources/light/refresh.svg",
+					"dark": "client/resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "mongoRunner.serverStatus",
+				"title": "Server Status",
+				"icon": {
+					"light": "client/resources/light/refresh.png",
+					"dark": "client/resources/dark/refresh.png"
+				}
+			},
+			{
+				"command": "mongoRunner.serverBuildInfo",
+				"title": "Server Build Info"
+			},
+			{
+				"command": "mongoRunner.deleteDatabase",
+				"title": "Delete Database"
+			},
+			{
+				"command": "mongoRunner.deleteCollection",
+				"title": "Delete Collection"
+			},
+			{
+				"command": "mongoRunner.createCollection",
+				"title": "Create Collection"
+			},
+			{
+				"command": "mongoRunner.getCollectionAttributes",
+				"title": "Get Attributes"
+			},
+			{
+				"command": "mongoRunner.getIndex",
+				"title": "Get Index"
+			},
+			{
+				"command": "mongoRunner.createIndex",
+				"title": "Create Index..."
+			},
+			{
+				"command": "mongoRunner.simpleQuery",
+				"title": "Simple query..."
+			},
+			{
+				"command": "mongoRunner.findFirst20Docs",
+				"title": "Find First 20 Docs"
+			},
+			{
+				"command": "mongoRunner.deleteIndex",
+				"title": "Delete Index"
+			},
+			{
+				"command": "mongoRunner.launchEditor",
+				"title": "MongoRunner Editor"
+			},
+			{
+				"command": "mongoRunner.executeAllCommands",
+				"title": "Execute All Commands",
+				"icon": {
+					"dark": "./client/resources/dark/play-button.svg",
+					"light": "./client/resources/light/play-button.svg"
+				}
+			},
+			{
+				"command": "mongoRunner.clearOutput",
+				"title": "Clear Output",
+				"icon": {
+					"dark": "./client/resources/dark/trash.svg",
+					"light": "./client/resources/light/trash.svg"
+				}
+			},
+			{
+				"command": "mongoRunner.executeCommand",
+				"title": "Execute Command"
+			},
+			{
+				"command": "mongoRunner.queryPlanner",
+				"title": "Query Planner"
+			},
+			{
+				"command": "mongoRunner.executionStats",
+				"title": "executionStats"
+			},
+			{
+				"command": "mongoRunner.allPlansExecution",
+				"title": "allPlansExecution"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "mongoRunner.hostRefresh",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.hostConnect",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.hostDisconnect",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.refresh",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.serverStatus",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.serverBuildInfo",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.deleteDatabase",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.deleteCollection",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.createCollection",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.getCollectionAttributes",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.getIndex",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.createIndex",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.simpleQuery",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.findFirst20Docs",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.deleteIndex",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.launchEditor",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.executeAllCommands",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.clearOutput",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.executeCommand",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.queryPlanner",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.executionStats",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.allPlansExecution",
+					"when": "false"
+				},
+				{
+					"command": "mongoRunner.clearOutput",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "mongoRunner.refresh",
+					"when": "view == mongoRunner"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "mongoRunner.hostRefresh",
+					"when": "viewItem == host:connected"
+				},
+				{
+					"command": "mongoRunner.hostConnect",
+					"when": "viewItem == host:closed"
+				},
+				{
+					"command": "mongoRunner.hostDisconnect",
+					"when": "viewItem == host:connected"
+				},
+				{
+					"command": "mongoRunner.serverBuildInfo",
+					"when": "viewItem == databases",
+					"group": "dbsGroup@2"
+				},
+				{
+					"command": "mongoRunner.serverStatus",
+					"when": "viewItem == databases",
+					"group": "dbsGroup@1"
+				},
+				{
+					"command": "mongoRunner.deleteDatabase",
+					"when": "viewItem == database",
+					"group": "dbGroup@2"
+				},
+				{
+					"command": "mongoRunner.launchEditor",
+					"when": "viewItem == database",
+					"group": "dbGroup@1"
+				},
+				{
+					"command": "mongoRunner.launchEditor",
+					"when": "viewItem == collection",
+					"group": "colGroup1@1"
+				},
+				{
+					"command": "mongoRunner.deleteCollection",
+					"when": "viewItem == collection",
+					"group": "colGroup2@6"
+				},
+				{
+					"command": "mongoRunner.getCollectionAttributes",
+					"when": "viewItem == collection",
+					"group": "colGroup2@2"
+				},
+				{
+					"command": "mongoRunner.getIndex",
+					"when": "viewItem == collection",
+					"group": "colGroup2@4"
+				},
+				{
+					"command": "mongoRunner.createIndex",
+					"when": "viewItem == collection",
+					"group": "colGroup2@5"
+				},
+				{
+					"command": "mongoRunner.findFirst20Docs",
+					"when": "viewItem == collection",
+					"group": "colGroup2@3"
+				},
+				{
+					"command": "mongoRunner.simpleQuery",
+					"when": "viewItem == collection",
+					"group": "colGroup2@6"
+				},
+				{
+					"command": "mongoRunner.launchEditor",
+					"when": "viewItem == index",
+					"group": "idxGroup@1"
+				},
+				{
+					"command": "mongoRunner.deleteIndex",
+					"when": "viewItem == index",
+					"group": "idxGroup@2"
+				},
+				{
+					"command": "mongoRunner.createIndex",
+					"when": "viewItem == indexes",
+					"group": "idxGroup2@1"
+				},
+				{
+					"command": "mongoRunner.launchEditor",
+					"when": "viewItem == indexes",
+					"group": "idxGroup1@1"
+				}
+			],
+			"editor/title": [
+				{
+					"when": "editorLangId == mongodbRunner",
+					"command": "mongoRunner.executeAllCommands",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == mongodbRunner",
+					"command": "mongoRunner.clearOutput",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"type": "object",
+				"title": "MongoDB Runner Configuration",
+				"properties": {
+					"mongoRunner": {
+						"type": "object",
+						"default": {},
+						"description": "Complete connection configuration for your MongoDB.",
+						"properties": {
+							"connection": {
+								"title": "MongoDB Runner Configuration",
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string",
+										"default": "mongodb://",
+										"description": "MongoDB URI"
+									},
+									"name": {
+										"type": "string"
+									},
+									"activeOnStartUp": {
+										"type": "boolean",
+										"default": false,
+										"description": "whether launch mongodb runner on start up"
+									}
+								}
+							},
+							"connections": [
+								{
+									"title": "MongoDB Runner Configuration",
+									"type": "object",
+									"properties": {
+										"url": {
+											"type": "string",
+											"default": "mongodb://",
+											"description": "MongoDB URI"
+										},
+										"name": {
+											"type": "string"
+										},
+										"activeOnStartUp": {
+											"type": "boolean",
+											"default": false,
+											"description": "whether launch mongodb runner on start up"
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:test": "node ./node_modules/vscode/bin/test",
+		"test:client": "cd client && yarn test",
+		"test:server": "cd server && yarn test",
+		"test": "npm run test:client && npm run test:server",
+		"publish:extension": "vsce publish && git tag `cat package.json |grep version |head -n 1|awk -F: '{print$2}' |sed 's/[\",]//g'|tr -d '[[:space:]]'` && git push --tags",
+		"login": "vsce login JoeyYiZhao",
+		"package": "vsce package",
+		"clean": "rimraf client/node_modules && rimraf server/node_modules && rimraf node_modules"
+	},
+	"devDependencies": {
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.9.8",
+		"@types/vscode": "^1.64.0",
+		"@vscode/test-electron": "^2.1.2",
+		"eslint": "^6.8.0",
+		"jest": "^24.9.0",
+		"rimraf": "^3.0.2",
+		"typescript": "^3.8.3",
+		"vsce": "^2.6.7"
+	},
+	"__metadata": {
+		"id": "79f1d55d-695e-4022-9baa-2fe46f9cb026",
+		"publisherId": "ac7b1644-7e5b-4b2c-a93f-c6ea32c1a5a6",
+		"publisherDisplayName": "Joey Yi Zhao",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1707454688915,
+		"pinned": false
+	}
+}
