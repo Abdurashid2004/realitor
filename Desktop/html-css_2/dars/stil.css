@@ -1,0 +1,588 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/Poppins/Poppins-Regular.ttf");
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================ Start nav ===================== */
+
+.container {
+  width: 1130px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.logo img {
+ width: 20%;
+}
+
+header .header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .menu {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+header .menu .dropdown {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+header .menu a {
+  text-decoration: none;
+  color: #8b8e99;
+  font-weight: 500px;
+  padding: 18px 0;
+  font-size: 20px;
+  display: block;
+}
+
+header .menu .dropdown-menu {
+  position: absolute;
+  width: 100px;
+  top: 20px;
+  display: none;
+  padding: 10px;
+}
+
+header .dropdown:hover .dropdown-menu {
+  display: block;
+}
+header svg {
+  transition: 1s;
+}
+
+header .dropdown:hover svg {
+  transform: rotate(-180deg);
+}
+
+header .header-btns button {
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.shop {
+  position: relative;
+}
+.shop span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: blue;
+  border-radius: 100%;
+  font-size: 14px;
+  color: #fff;
+  top: 0;
+  right: -5px;
+  transform: translateY(-50%);
+}
+
+/* ==================== Start Hero  ================== */
+#hero {
+  background-image: linear-gradient(#383638, #0b0b0b);
+  position: relative;
+  height: 100vh;
+  padding-top: 90px;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+#hero .form {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 8px 20px;
+  display: flex;
+}
+
+.hero .form {
+  padding: 8px 20px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 184px;
+}
+
+.hero-left {
+  width: 460px;
+}
+
+.hero-left h1 {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 80.32px;
+  color: #fff;
+}
+
+.hero-left p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20.08px;
+  color: #8b8e99;
+  padding-top: 25px;
+  padding-bottom: 40px;
+}
+
+.hero-right img {
+  padding-top: 20px;
+}
+
+.hero-left input {
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.hero input:focus-visible {
+  outline: none;
+}
+span {
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+span svg {
+  font-size: 18px;
+}
+
+.hero-left .search {
+  background-color: #3858b6;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ===================== watch-card ================== */
+
+.watch-card {
+  margin-top: 73px;
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.first-card {
+  display: flex;
+  gap: 20px;
+  background-color: #f6f6f6;
+  padding: 12px;
+  width: 354px;
+  border-radius: 22px;
+}
+
+.second-card {
+  display: flex;
+  background-color: #f6f6f6;
+  padding: 12px;
+  gap: 20px;
+  width: 354px;
+  margin-left: 20px;
+  border-radius: 22px;
+}
+
+.thrid-card {
+  display: flex;
+  gap: 20px;
+  background-color: #f6f6f6;
+  padding: 12px;
+  width: 354px;
+  margin-left: 20px;
+  border-radius: 22px;
+}
+
+.right-watch {
+  text-align: center;
+  padding-top: 18px;
+}
+
+.right-watch h1 {
+  font-size: 36px;
+  padding-bottom: 7px;
+}
+
+.right-watch p {
+  color: #8b8e99;
+}
+
+/*================== Start Products ================ */
+#products {
+  padding-bottom: 130px;
+}
+
+.cards {
+  margin: 50px 0;
+  display: grid;
+  grid-template-areas:
+    "a b c"
+    "d e f";
+}
+
+.cards-navbar {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.cards-navbar h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.36px;
+}
+
+.cards-navbar h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43.57px;
+  color: #1e1d1d;
+}
+
+.shopping {
+  width: 38px;
+  height: 39px;
+  border-radius: 100%;
+  border: 2px;
+  background-color: blue;
+}
+
+.shopping svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.like {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: 2px;
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.like svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ======== start first card======== */
+
+.firsts-card {
+  position: relative;
+  width: 340px;
+}
+
+.firsts-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.firsts-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.firsts-card:hover .card-element {
+  display: flex;
+}
+
+.name_price {
+  text-align: center;
+  display: block;
+}
+
+.name_price .span1 {
+  color: #8b8e99;
+  text-decoration: line-through;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24.1px;
+}
+
+.name_price .span2 {
+  color: #000;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28.92px;
+}
+
+.star {
+  font-size: 20px;
+}
+
+.more-btn {
+  margin-left: 435px;
+  width: 196px;
+  height: 46px;
+  background-color: #3858d6;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cards .firsts-card {
+  grid-area: a;
+}
+/* ======== End first card======== */
+
+/* ======== start second card======== */
+
+.seconds-card {
+  position: relative;
+  width: 340px;
+}
+
+.seconds-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.seconds-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.seconds-card:hover .card-element {
+  display: flex;
+}
+
+.cards .seconds-card {
+  grid-area: b;
+}
+/* ======== end second card======== */
+
+/* ==========start thrid card ========= */
+
+.thrids-card {
+  position: relative;
+  width: 340px;
+}
+
+.thrids-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.thrids-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.thrids-card:hover .card-element {
+  display: flex;
+}
+
+.cards .thrids-card {
+  grid-area: c;
+}
+/* ==========end thrid card ========= */
+
+/* ==========start fourth card ========= */
+
+.fourths-card {
+  position: relative;
+  width: 340px;
+  margin-top: 28px;
+}
+
+.fourths-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.fourths-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.fourths-card:hover .card-element {
+  display: flex;
+}
+
+.cards .fourths-card {
+  grid-area: d;
+}
+/* ========== end fourth card ========= */
+
+/* ========== start fifth card ========= */
+.fifths-card {
+  position: relative;
+  width: 340px;
+  margin-top: 28px;
+}
+
+.fifths-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.fifths-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.fifths-card:hover .card-element {
+  display: flex;
+}
+
+.cards .fifths-card {
+  grid-area: e;
+}
+/* ========== end fifth card ========= */
+
+/* ==========start sixth card ========= */
+.sixths-card {
+  position: relative;
+  width: 340px;
+  margin-top: 28px;
+}
+
+.sixths-card img {
+  background-color: #f6f6f6;
+  padding: 35px;
+}
+
+.sixths-card .card-element {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  gap: 5px;
+}
+
+.sixths-card:hover .card-element {
+  display: flex;
+}
+
+.cards .sixths-card {
+  grid-area: f;
+}
+/* ========== end sixth card ========= */
+/* ========== Start fourth section Style ========= */
+
+.all_users {
+  padding-bottom: 1000px;
+}
+
+.title {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.title h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.36px;
+  color: #3858d6;
+}
+
+.title h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43.57px;
+  color: #1e1d1d;
+}
+
+.users {
+  display: flex;
+}
+
+.users .first-user {
+  display: flex;
+  background-color: #f6f6f6;
+  padding: 12px;
+  width: 524px;
+  border-radius: 22px;
+}
+
+.first-user img {
+  margin-left: 10px;
+}
+
+.right-title {
+  padding-top: 18px;
+}
+
+.right-title h1 {
+  font-size: 36px;
+  margin-left: 40px;
+  padding-bottom: 7px;
+}
+
+.right-title p {
+  color: #8b8e99;
+  width: 60%;
+  margin-left: 40px;
+}
+
+.users .second-user {
+  display: flex;
+  background-color: #f6f6f6;
+  padding: 12px;
+  border-radius: 22px;
+  width: 524px;
+  margin-left: 35px;
+}
+
+.second-user img {
+  margin-left: 10px;
+}
+
+.users .star {
+  padding-top: 15px;
+  margin-left: 40px;
+  font-size: 25px;
+}
